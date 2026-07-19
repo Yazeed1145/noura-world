@@ -1,1 +1,265 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عالم نورة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #FFF8F1;
+    --blush: #F6DCE0;
+    --rose: #C9727C;
+    --rose-deep: #8C3F49;
+    --coffee: #3E2A25;
+    --coffee-light: #6B4A3E;
+    --gold: #D8A461;
+    --line: rgba(62,42,37,.14);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background: var(--cream);
+    color: var(--coffee);
+    font-family: 'Tajawal', sans-serif;
+    line-height: 1.8;
+    overflow-x:hidden;
+  }
+  h1,h2,h3, .display{
+    font-family: 'Lalezar', cursive;
+    font-weight: 400;
+    letter-spacing: .5px;
+  }
 
+  .petal{
+    position:absolute;
+    width: 26px; height: 26px;
+    background: var(--rose);
+    border-radius: 0 60% 0 60%;
+    opacity:.35;
+    animation: drift 14s linear infinite;
+  }
+  @keyframes drift{
+    0%{ transform: translateY(-40px) rotate(0deg); opacity:0;}
+    10%{opacity:.4;}
+    100%{ transform: translateY(120vh) rotate(320deg); opacity:0;}
+  }
+
+  header{
+    position:relative;
+    min-height: 92vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding: 40px 20px;
+    background:
+      radial-gradient(circle at 20% 20%, var(--blush) 0%, transparent 45%),
+      radial-gradient(circle at 80% 75%, #F1C6CD 0%, transparent 40%),
+      var(--cream);
+    overflow:hidden;
+  }
+  .eyebrow{
+    font-size: 15px;
+    color: var(--rose-deep);
+    letter-spacing: 4px;
+    margin-bottom: 18px;
+  }
+  header h1{
+    font-size: clamp(52px, 11vw, 110px);
+    color: var(--coffee);
+    line-height: 1;
+  }
+  header h1 span{ color: var(--rose); }
+  .tagline{
+    margin-top: 22px;
+    max-width: 520px;
+    font-size: 18px;
+    color: var(--coffee-light);
+  }
+  .cup{
+    margin-top: 46px;
+    width: 120px;
+  }
+  .scroll-hint{
+    position:absolute;
+    bottom: 34px;
+    font-size: 13px;
+    color: var(--coffee-light);
+    letter-spacing: 2px;
+  }
+
+  section{
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 110px 24px;
+  }
+  .section-head{
+    text-align:center;
+    margin-bottom: 60px;
+  }
+  .section-head .num{
+    display:inline-block;
+    font-family:'Lalezar';
+    font-size:14px;
+    color: var(--rose);
+    border: 1px solid var(--rose);
+    border-radius: 20px;
+    padding: 4px 16px;
+    margin-bottom: 16px;
+  }
+  .section-head h2{
+    font-size: clamp(34px, 6vw, 52px);
+    color: var(--coffee);
+  }
+  .section-head p{
+    color: var(--coffee-light);
+    margin-top: 10px;
+    font-size: 15px;
+  }
+
+  .cafes{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap: 22px;
+  }
+  .cafe-card{
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 26px 22px;
+    position:relative;
+    transition: transform .35s ease, box-shadow .35s ease;
+  }
+  .cafe-card:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 18px 34px -18px rgba(140,63,73,.35);
+  }
+  .cafe-card .icon{ font-size: 28px; }
+  .cafe-card h3{ margin-top: 12px; font-size: 22px; color: var(--rose-deep);}
+  .cafe-card p{ font-size: 14px; color: var(--coffee-light); margin-top: 6px;}
+
+  .loves{
+    display:flex;
+    flex-wrap:wrap;
+    gap: 14px;
+    justify-content:center;
+  }
+  .chip{
+    background: var(--blush);
+    color: var(--rose-deep);
+    padding: 12px 24px;
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid transparent;
+    transition: .3s;
+  }
+  .chip:hover{
+    background: var(--rose);
+    color: #fff;
+    transform: translateY(-3px);
+  }
+
+  footer{
+    text-align:center;
+    padding: 60px 20px 80px;
+    color: var(--coffee-light);
+    font-size: 14px;
+  }
+  footer .display{
+    font-size: 26px;
+    color: var(--rose-deep);
+    margin-bottom: 8px;
+  }
+
+  @media (max-width: 600px){
+    section{ padding: 80px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div id="petals"></div>
+  <div class="eyebrow">مرحبًا بكم في</div>
+  <h1>عالم <span>نورة</span></h1>
+  <p class="tagline">هنا حيث تلتقي رائحة القهوة بأشياء تحبها نورة صالح العشرة، وقصص صغيرة عن يومياتها</p>
+  <svg class="cup" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20 35 H70 V60 C70 75 58 82 45 82 C32 82 20 75 20 60 V35Z" stroke="#8C3F49" stroke-width="3"/>
+    <path d="M70 40 C82 40 82 58 70 58" stroke="#8C3F49" stroke-width="3"/>
+    <path d="M28 22 C24 28 32 30 28 36" stroke="#C9727C" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M45 18 C41 24 49 26 45 32" stroke="#C9727C" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M62 22 C58 28 66 30 62 36" stroke="#C9727C" stroke-width="2.5" stroke-linecap="round"/>
+  </svg>
+  <div class="scroll-hint">مرري للأسفل ↓</div>
+</header>
+
+<section id="cafes">
+  <div class="section-head">
+    <span class="num">القهاوي</span>
+    <h2>قهاوي نورة المفضلة</h2>
+    <p>الأماكن اللي تشرب فيها فنجانها المفضل</p>
+  </div>
+  <div class="cafes">
+    <div class="cafe-card">
+      <div class="icon">☕</div>
+      <h3>جوى</h3>
+      <p>لاتيه بالفانيلا، ركن هادئ للقراءة</p>
+    </div>
+    <div class="cafe-card">
+      <div class="icon">🌸</div>
+      <h3>مسلى</h3>
+      <p>ديكور وردي، وكيك الفراولة</p>
+    </div>
+    <div class="cafe-card">
+      <div class="icon">🍂</div>
+      <h3>ندرو</h3>
+      <p>قهوة مختصة وجو دافئ بالخريف</p>
+    </div>
+    <div class="cafe-card">
+      <div class="icon">🥐</div>
+      <h3>قهوة غرفتها</h3>
+      <p>كوب تسويه بنفسها بهدوء غرفتها</p>
+    </div>
+  </div>
+</section>
+
+<section id="loves" style="background:linear-gradient(180deg, transparent, #FBEFE9, transparent);">
+  <div class="section-head">
+    <span class="num">تحبهم</span>
+    <h2>أشخاص وأشياء تحبها نورة</h2>
+    <p>القائمة اللي تحط لها ابتسامة</p>
+  </div>
+  <div class="loves">
+    <span class="chip">العائلة</span>
+    <span class="chip">صديقاتها المقربات</span>
+    <span class="chip">القهوة الصباحية</span>
+    <span class="chip">راشد الماجد</span>
+    <span class="chip">القراءة</span>
+    <span class="chip">رائحة المطر</span>
+  </div>
+</section>
+
+<footer>
+  <div class="display">عالم نورة</div>
+  <p>صُنع بحب ☕🌸</p>
+</footer>
+
+<script>
+  const container = document.getElementById('petals');
+  for(let i=0;i<18;i++){
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.style.left = Math.random()*100 + '%';
+    p.style.animationDelay = (Math.random()*14) + 's';
+    p.style.animationDuration = (10 + Math.random()*8) + 's';
+    p.style.transform = `scale(${0.5 + Math.random()*0.8})`;
+    container.appendChild(p);
+  }
+</script>
+
+</body>
+</html>
